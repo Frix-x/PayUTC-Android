@@ -16,6 +16,8 @@ import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -117,10 +119,11 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     }
 
     public List<NavigationItem> getMenu() {
-        List<NavigationItem> items = new ArrayList<NavigationItem>();
-        items.add(new NavigationItem("item 1", getResources().getDrawable(R.drawable.ic_menu_check)));
-        items.add(new NavigationItem("item 2", getResources().getDrawable(R.drawable.ic_menu_check)));
-        items.add(new NavigationItem("item 3", getResources().getDrawable(R.drawable.ic_menu_check)));
+        List<NavigationItem> items = new ArrayList<>();
+        items.add(new NavigationItem("Mon compte", ResourcesCompat.getDrawable(getResources(), R.drawable.ic_menu_check, null)));
+        items.add(new NavigationItem("Historique", ResourcesCompat.getDrawable(getResources(), R.drawable.ic_menu_check, null)));
+        items.add(new NavigationItem("Virement", ResourcesCompat.getDrawable(getResources(), R.drawable.ic_menu_check, null)));
+        items.add(new NavigationItem("Rechargement", ResourcesCompat.getDrawable(getResources(), R.drawable.ic_menu_check, null)));
         return items;
     }
 
