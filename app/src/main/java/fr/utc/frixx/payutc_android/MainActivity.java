@@ -1,6 +1,9 @@
 package fr.utc.frixx.payutc_android;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -11,7 +14,7 @@ import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity
-        implements NavigationDrawerCallbacks {
+        implements NavigationDrawerCallbacks, AccountFragment.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -39,6 +42,19 @@ public class MainActivity extends ActionBarActivity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         Toast.makeText(this, "Menu item selected -> " + position, Toast.LENGTH_SHORT).show();
+        Fragment fragment = null;
+        FragmentManager fragmentManager = getFragmentManager();
+        switch(position) {
+            default:
+                fragment = new Fragment();
+                break;
+            case 0:
+                fragment = new AccountFragment();
+                break;
+        }
+        System.out.println("AccountFragment:"+fragment);
+        System.out.println("position:"+position);
+        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
     }
 
 
@@ -79,5 +95,8 @@ public class MainActivity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
-
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+        System.out.println("TEST");
+    }
 }
