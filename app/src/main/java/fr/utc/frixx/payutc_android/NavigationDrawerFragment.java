@@ -120,10 +120,8 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 
     public List<NavigationItem> getMenu() {
         List<NavigationItem> items = new ArrayList<NavigationItem>();
-        items.add(new NavigationItem("Mon compte", ResourcesCompat.getDrawable(getResources(), R.drawable.ic_menu_check, null)));
-        items.add(new NavigationItem("Historique", ResourcesCompat.getDrawable(getResources(), R.drawable.ic_menu_check, null)));
-        items.add(new NavigationItem("Virement", ResourcesCompat.getDrawable(getResources(), R.drawable.ic_menu_check, null)));
-        items.add(new NavigationItem("Rechargement", ResourcesCompat.getDrawable(getResources(), R.drawable.ic_menu_check, null)));
+        items.add(new NavigationItem("Blocage du compte", null));
+        items.add(new NavigationItem("Déconnexion", null));
         return items;
     }
 
@@ -138,7 +136,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mFragmentContainerView = getActivity().findViewById(fragmentId);
         mDrawerLayout = drawerLayout;
 
-        mDrawerLayout.setStatusBarBackgroundColor(getResources().getColor(R.color.myPrimaryDarkColor));
+        mDrawerLayout.setStatusBarBackgroundColor(getResources().getColor(R.color.ColorPrimary));
 
         mActionBarDrawerToggle = new ActionBarDrawerToggle(getActivity(), mDrawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
             @Override
