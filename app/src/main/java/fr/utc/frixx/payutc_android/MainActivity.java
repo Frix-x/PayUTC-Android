@@ -14,6 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by Edwin on 15/02/2015.
  */
@@ -35,16 +38,21 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
         setContentView(R.layout.activity_main);
 
 
-        // Creating The Toolbar and setting it as the Toolbar for the activity
+        Intent intent = getIntent();
 
-        toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
+        String login = UserData.manager().getLogin();
+        String sessionid = UserData.manager().getSessionid();
 
         navigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.fragment_drawer);
 
         navigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), toolbar);
 
-        navigationDrawerFragment.setUserData("Prenom Nom", "login_utc", BitmapFactory.decodeResource(getResources(), R.drawable.avatar));
+        navigationDrawerFragment.setUserData("Prenom Nom", login, BitmapFactory.decodeResource(getResources(), R.drawable.avatar));
+
+        // Creating The Toolbar and setting it as the Toolbar for the activity
+
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
 
         // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
         adapter =  new ViewPagerAdapter(getSupportFragmentManager(),Titles,Numboftabs);
@@ -68,10 +76,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
         // Setting the ViewPager For the SlidingTabsLayout
         tabs.setViewPager(pager);
 
-        Intent intent = getIntent();
 
-        String message = intent.getStringExtra(LoginActivity.LOGIN_MESSAGE);
-        System.out.println("Login Message: " + message);
+
     }
 
 

@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.concurrent.ExecutionException;
 
 
@@ -53,11 +56,23 @@ public class LoginActivity extends AppCompatActivity {
                             String lcrep = null;
                             try {
                                 lcrep = lc.execute("http://localhost", stresp, "payutcdev", getString(R.string.app_key)).get();
-                                System.out.println(lcrep);
-                                if (lcrep != null) {
-                                    String sessionid = lcrep;
+                                JSONObject jObject = null;
+                                try {
+                                    jObject = new JSONObject(lcrep);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                String sessionid = null, login = null;
+                                try {
+                                    sessionid = jObject.getString("sessionid");
+                                    login = jObject.getString("username");
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                if (sessionid != null) {
+                                    UserData.manager().setLoginAndId(login, sessionid);
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    intent.putExtra(LOGIN_MESSAGE, sessionid);
+                                    //intent.putExtra(LOGIN_MESSAGE, lcrep);
                                     startActivity(intent);
                                 } else {
                                     Toast.makeText(LoginActivity.this, "Serveur Payutc injoignable", Toast.LENGTH_SHORT).show();
