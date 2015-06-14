@@ -1,5 +1,6 @@
 package fr.utc.frixx.payutc_android;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,6 +12,7 @@ import java.util.concurrent.ExecutionException;
 
 
 public class LoginActivity extends AppCompatActivity {
+    public final static String LOGIN_MESSAGE = "fr.utc.payutc.loginmessage";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 if (response == null || !response.startsWith("TGT")) {
-                    Toast.makeText(LoginActivity.this, "Erreur de connexion", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Identifiants invalides", Toast.LENGTH_SHORT).show();
                 } else {
                     //ok
                     TGTConnexion tgt = new TGTConnexion();
@@ -46,15 +48,27 @@ public class LoginActivity extends AppCompatActivity {
                         stresp = tgt.execute(response, "http://localhost").get();
                         System.out.println(stresp);
 
-                        LoginCas lc = new LoginCas();
-                        String lcrep = null;
-                        try {
-                            lcrep = lc.execute("http://localhost", stresp, "payutcdev", getString(R.string.app_key)).get();
-                            System.out.println(lcrep);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        } catch (ExecutionException e) {
-                            e.printStackTrace();
+                        if (stresp.startsWith("ST")) {
+                            LoginCas lc = new LoginCas();
+                            String lcrep = null;
+                            try {
+                                lcrep = lc.execute("http://localhost", stresp, "payutcdev", getString(R.string.app_key)).get();
+                                System.out.println(lcrep);
+                                if (lcrep != null) {
+                                    String sessionid = lcrep;
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    intent.putExtra(LOGIN_MESSAGE, sessionid);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "Serveur Payutc injoignable", Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            } catch (ExecutionException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Serveur CAS injoignable", Toast.LENGTH_SHORT).show();
                         }
 
                     } catch (InterruptedException e) {

@@ -2,6 +2,7 @@ package fr.utc.frixx.payutc_android;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.v4.view.ViewPager;
@@ -67,8 +68,10 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
         // Setting the ViewPager For the SlidingTabsLayout
         tabs.setViewPager(pager);
 
+        Intent intent = getIntent();
 
-
+        String message = intent.getStringExtra(LoginActivity.LOGIN_MESSAGE);
+        System.out.println("Login Message: " + message);
     }
 
 
