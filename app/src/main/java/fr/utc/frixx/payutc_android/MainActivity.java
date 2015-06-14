@@ -43,11 +43,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
         String login = UserData.manager().getLogin();
         String sessionid = UserData.manager().getSessionid();
 
-        navigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.fragment_drawer);
-
-        navigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), toolbar);
-
-        navigationDrawerFragment.setUserData("Prenom Nom", login, BitmapFactory.decodeResource(getResources(), R.drawable.avatar));
 
         // Creating The Toolbar and setting it as the Toolbar for the activity
 
@@ -76,7 +71,11 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
         // Setting the ViewPager For the SlidingTabsLayout
         tabs.setViewPager(pager);
 
+        navigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.fragment_drawer);
 
+        navigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), toolbar);
+
+        navigationDrawerFragment.setUserData("Prenom Nom", login, BitmapFactory.decodeResource(getResources(), R.drawable.avatar));
 
     }
 
