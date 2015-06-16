@@ -13,13 +13,18 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
--->
+  -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-<resources>
+    <group>
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_dashboard"
+            android:title="Bloquer mon compte" />
+        <item
+            android:id="@+id/nav_messages"
+            android:icon="@drawable/ic_event"
+            android:title="Déconnexion" />
+    </group>
 
-    <style name="Theme.AppDesign" parent="Base.Theme.AppDesign">
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-    </style>
-
-</resources>
+</menu>
