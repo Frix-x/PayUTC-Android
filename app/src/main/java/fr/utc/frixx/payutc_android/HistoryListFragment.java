@@ -53,7 +53,7 @@ public class HistoryListFragment extends Fragment {
     }
 
     private List<String> getRandomSublist(String[] array, int amount) {
-        ArrayList<String> list = new ArrayList<>(amount);
+        ArrayList<String> list = new ArrayList<String>(amount);
         Random random = new Random();
         while (list.size() < amount) {
             list.add(array[random.nextInt(array.length)]);
