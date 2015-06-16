@@ -18,11 +18,11 @@
 
     <group>
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_block_account"
             android:icon="@drawable/ic_dashboard"
             android:title="Bloquer mon compte" />
         <item
-            android:id="@+id/nav_messages"
+            android:id="@+id/nav_disconnect"
             android:icon="@drawable/ic_event"
             android:title="Déconnexion" />
     </group>

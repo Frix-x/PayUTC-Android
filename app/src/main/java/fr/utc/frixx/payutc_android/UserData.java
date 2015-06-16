@@ -14,55 +14,64 @@ public class UserData {
     private String prenom;
     private String nom;
     private Integer solde;
-    private Boolean stblocked;
+    private Boolean blocked_status;
     //private Hashtable history;
 
-    public static UserData manager(){
+    public static UserData manager (){
         if (manager == null){
             manager = new UserData();
         }
         return manager;
     }
 
-    public void setLoginAndId(String l, String sid){
+    public void reset () {
+        login = null;
+        sessionid = null;
+        prenom = null;
+        nom = null;
+        solde = null;
+        blocked_status = null;
+    }
+
+    public void setLoginAndId (String l, String sid){
         login = l;
         sessionid = sid;
     }
 
-    public String getLogin(){
+    public String getLogin (){
         return login;
     }
 
-    public String getSessionid(){
+    public String getSessionid (){
         return sessionid;
     }
 
-    public void setNom(String p, String n){
+    public void setNom (String p, String n){
         prenom = p;
         nom = n;
     }
 
-    public String getPrenom(){
+    public String getPrenom (){
         return prenom;
     }
 
-    public String getNom(){
+    public String getNom (){
         return nom;
     }
 
-    public void setSolde(Integer s){
+    public void setSolde (Integer s){
         solde = s;
     }
 
-    public void setStblocked(Boolean stb){
-        stblocked = stb;
+    public void setBlocked_status (Boolean bs){
+        blocked_status = bs;
     }
 
-    public Integer getSolde(){
+    public Integer getSolde (){
         return solde;
     }
 
-    public Boolean getStBlocked(){
-        return stblocked;
+    public Boolean getBlocked_status (){
+        return blocked_status;
     }
 }

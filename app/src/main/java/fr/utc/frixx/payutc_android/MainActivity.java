@@ -116,7 +116,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 menuItem.setChecked(true);
-                mDrawerLayout.closeDrawers();
+                switch (menuItem.getItemId()) {
+                    case R.id.nav_block_account:
+                        System.out.println("Bloquer mon compte");
+                        break;
+                    case R.id.nav_disconnect:
+                        System.out.println("Déconnexion");
+                        UserData.manager().reset();
+                        MainActivity.this.finish();
+                        break;
+                }
+                //mDrawerLayout.closeDrawers();
                 return true;
             }
         });
