@@ -15,11 +15,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CasConnexion2 extends AsyncTask<String, Integer, String> {
+public class CasConnexion2 {
 
-
-    @Override
-    protected String doInBackground(String... params) {
+    public String mkRequest(String... params){
         HttpClient httpclient = new DefaultHttpClient();
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
         HttpPost httppost = new HttpPost("https://cas.utc.fr/cas/v1/tickets/"+params[0]);

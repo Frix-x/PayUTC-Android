@@ -16,11 +16,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoginCas extends AsyncTask<String, Integer, String> {
+public class CasConnexion3 {
 
-
-    @Override
-    protected String doInBackground(String... params) {
+    public String mkRequest(String... params){
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost("https://api.nemopay.net/services/KEY/loginCas2");
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
