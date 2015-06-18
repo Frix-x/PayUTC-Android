@@ -17,14 +17,7 @@
 
 <resources>
     <color name="window_background">#FFF5F5F5</color>
-
-  <color name="ColorPrimary">#3F51B5</color>
-  <color name="ColorPrimaryDark">#9FA8DA</color>
-  <color name="tabsScrollColor">#283593</color>
-  <color name="LightBgColor">#EEEEEE</color>
-  <color name="LightSelectedBgColor">#ECEFF1</color>
-  <color name="LightFgColor">#424242</color>
-  <color name="ColorAccent">#FFC107</color>
-  <color name="TextColorPrimary">#000000</color>
-  <color name="NavBarColor">#000000</color>
+    <color name="colors_Primary">#03A9F4</color>
+    <color name="colors_PrimaryDark">#0288D1</color>
+    <color name="colors_Accent">#FFC107</color>
 </resources>
