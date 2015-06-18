@@ -1,7 +1,6 @@
 package fr.utc.frixx.payutc_android;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -16,7 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TGTConnexion extends AsyncTask<String, Integer, String> {
+public class CasConnexion2 extends AsyncTask<String, Integer, String> {
 
 
     @Override

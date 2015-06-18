@@ -1,7 +1,6 @@
 package fr.utc.frixx.payutc_android;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -36,7 +35,6 @@ public class CasConnexion extends AsyncTask<String, Integer, String> {
             String rep = EntityUtils.toString(response.getEntity());
             int index = rep.indexOf("/cas/v1/tickets/");
 
-            Log.d("Réponse du serveur =", rep);
             String tbt = rep.substring(index + "/cas/v1/tickets/".length());
             tbt = tbt.split("\"")[0];
             return tbt;

@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Identifiants invalides", Toast.LENGTH_SHORT).show();
                 } else {
                     //ok
-                    TGTConnexion tgt = new TGTConnexion();
+                    CasConnexion2 tgt = new CasConnexion2();
                     String stresp = null;
                     try {
                         stresp = tgt.execute(response, "http://localhost").get();
