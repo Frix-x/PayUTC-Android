@@ -16,8 +16,6 @@
 
 package fr.utc.frixx.payutc_android;
 
-import java.util.Random;
-
 public class HistoryElement {
 
     public static int getHistoryElementDrawable() {

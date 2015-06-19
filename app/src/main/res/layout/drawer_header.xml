@@ -24,6 +24,13 @@
     android:orientation="vertical"
     android:gravity="bottom">
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/imageView2"
+        android:src="@drawable/default_avatar"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
