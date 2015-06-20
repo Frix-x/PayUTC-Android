@@ -24,7 +24,6 @@
   <string name="login">login</string>
 
   <!-- Login Activity -->
-  <string name="title_activity_login">Login CAS</string>
   <string name="prompt_username">Login CAS</string>
   <string name="prompt_password">Password</string>
   <string name="login_button">Connexion</string>
