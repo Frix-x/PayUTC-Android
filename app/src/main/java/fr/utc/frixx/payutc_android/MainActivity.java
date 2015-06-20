@@ -34,6 +34,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,13 +45,13 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
+    final String AVATAR_URL = "https://demeter.utc.fr/pls/portal30/portal30.get_photo_utilisateur?username=";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = getIntent();
         String login = UserData.manager().getLogin();
         String sessionid = UserData.manager().getSessionid();
 
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) {
             setupDrawerContent(navigationView);
+            new AsyncImgDownload((ImageView) findViewById(R.id.imageViewAvatar)).execute(AVATAR_URL + login);
         }
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
             setupViewPager(viewPager);
         }
 
+        /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        */
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
