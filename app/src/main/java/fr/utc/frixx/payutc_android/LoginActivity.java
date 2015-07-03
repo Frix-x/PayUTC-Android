@@ -138,23 +138,21 @@ public class LoginActivity extends Activity {
         @Override
         protected Boolean doInBackground(Void... params) {
 
-            //Connexion au CAS - Stage 1
-            CasConnexion httpCAS1 = new CasConnexion();
-            String tgt = httpCAS1.mkRequest(mUsername, mPassword);
+            HttpRequests httpCAS = new HttpRequests();
 
+            //Connexion au CAS - Stage 1
+            String tgt = httpCAS.casAuth1(mUsername, mPassword);
             if (tgt == null || !tgt.startsWith("TGT")) {
                 resultCon = 1;
                 return false;
             } else {
 
                 //Connexion au CAS - Stage 2
-                CasConnexion2 httpCAS2 = new CasConnexion2();
-                String ticketCAS = httpCAS2.mkRequest(tgt, "http://localhost");
+                String ticketCAS = httpCAS.casAuth2(tgt, "http://localhost");
                 if (ticketCAS.startsWith("ST")) {
 
                     //Connexion au CAS - Stage 3
-                    CasConnexion3 httpCAS3 = new CasConnexion3();
-                    String lcrep = httpCAS3.mkRequest("http://localhost", ticketCAS, "payutcdev", getString(R.string.app_key));
+                    String lcrep = httpCAS.casAuth3("http://localhost", ticketCAS, "payutcdev", getString(R.string.app_key));
                     JSONObject jObject = null;
                     try {
                         jObject = new JSONObject(lcrep);
